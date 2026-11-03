@@ -1,0 +1,15 @@
+GALERI KEGIATAN / UJI COBA PUSLITBANG POLRI
+==========================================
+
+Salin (copy-paste) foto-foto kegiatan uji coba SATRIA ke folder ini.
+Format yang didukung: .jpg  .jpeg  .png  .webp
+
+Dashboard akan OTOMATIS menampilkan semua foto di folder ini pada
+bagian 'Galeri Kegiatan' di halaman Masuk dan halaman Ringkasan KPA.
+Tidak perlu mengubah program.
+
+Tips:
+- Beri nama file yang deskriptif, karena nama file menjadi keterangan foto.
+  Contoh: 'Uji coba SATRIA - rapat Pokja 12 Okt 2026.jpg'.
+- Gunakan foto lanskap (melebar) agar tampil rapi.
+- Disarankan lebar 1200-1600 piksel, ukuran berkas < 1,5 MB per foto.
