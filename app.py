@@ -631,30 +631,8 @@ def foto_bangunan(keterangan="Gedung Markas Komando Puslitbang Polri"):
 
 
 def galeri(judul_galeri="Galeri Dokumentasi Kegiatan & Uji Coba Puslitbang Polri"):
-    """Menampilkan dokumentasi visual kegiatan resmi dari folder assets/kegiatan."""
-    folder = os.path.join(ASSET, "kegiatan")
-    berkas = []
-    if os.path.isdir(folder):
-        for f in sorted(os.listdir(folder)):
-            if f.lower().endswith((".jpg", ".jpeg", ".png", ".webp")) and not f.startswith("~$"):
-                berkas.append(f)
-    st.markdown("#### 📸 %s" % judul_galeri)
-    if not berkas:
-        st.info("Belum ada foto kegiatan pada folder assets/kegiatan.")
-        return
-    kol = st.columns(3)
-    for i, f in enumerate(berkas[:15]):
-        try:
-            with open(os.path.join(folder, f), "rb") as fh:
-                isi = fh.read()
-        except OSError:
-            continue
-        with kol[i % 3]:
-            st.image(isi, width='stretch')
-            nama = os.path.splitext(f)[0]
-            while nama and (nama[0].isdigit() or nama[0] in "_-."):
-                nama = nama[1:]
-            st.caption(nama.strip().replace("_", " ") or os.path.splitext(f)[0])
+    """Ditiadakan sesuai arahan pengguna."""
+    return
 
 
 def kaki():
@@ -796,7 +774,6 @@ def halaman_masuk():
         foto_bangunan("Gedung Markas Komando Puslitbang Polri — Rawamangun, Jakarta Timur")
 
     st.write("")
-    galeri()
     kaki()
 
 
@@ -1653,9 +1630,6 @@ def hal_ringkasan():
             ringkas.append({"ID": r["id"], "Risiko": r["risiko"][:60],
                             "Skor": skor, "Level": "%s %s" % (em(level_dari_skor(skor)), level_dari_skor(skor))})
         st.dataframe(pd.DataFrame(ringkas), hide_index=True, width='stretch')
-
-    st.divider()
-    galeri("Galeri Dokumentasi Kegiatan Puslitbang Polri")
 
 
 def hal_anggaran():
