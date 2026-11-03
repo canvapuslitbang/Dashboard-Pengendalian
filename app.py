@@ -561,6 +561,158 @@ def tema():
     .satria-kaki img { height: 38px; width: auto; }
     .satria-kaki .g { flex: 1; }
     .satria-kaki b { color: var(--gov-gold-300); }
+
+    /* ================================================================
+       RESPONSIVE DESIGN RULES — Desktop, Tablet, & Mobile Friendly
+    ================================================================ */
+
+    /* Global fluid layout and overflow control */
+    [data-testid="stAppViewContainer"] {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+    }
+    [data-testid="block-container"] {
+        max-width: 100% !important;
+        padding-top: 1.5rem !important;
+        padding-bottom: 3.5rem !important;
+        padding-left: clamp(0.75rem, 2.5vw, 2.5rem) !important;
+        padding-right: clamp(0.75rem, 2.5vw, 2.5rem) !important;
+    }
+    [data-testid="column"] {
+        min-width: 0 !important;
+    }
+
+    /* Fluid typography and clamp sizing for hero */
+    .satria-hero .judul {
+        font-size: clamp(1.15rem, 3.2vw, 1.55rem) !important;
+        word-break: break-word;
+    }
+    .satria-hero .sub {
+        font-size: clamp(0.78rem, 2vw, 0.88rem) !important;
+        word-break: break-word;
+    }
+
+    /* Responsive Dataframe and Tables */
+    [data-testid='stDataFrame'], [data-testid='stTable'] {
+        width: 100% !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Tablet breakpoint (<= 992px) */
+    @media (max-width: 992px) {
+        .satria-hero .isi {
+            padding: 16px 20px;
+            gap: 16px;
+        }
+        .satria-hero .lgo {
+            width: 80px;
+            height: 80px;
+        }
+        .satria-hero .lgo img {
+            max-width: 68px;
+            max-height: 68px;
+        }
+        .satria-hero .lgo.satria {
+            width: 90px;
+            height: 90px;
+        }
+        .satria-hero .lgo.satria img {
+            max-width: 90px;
+            max-height: 90px;
+        }
+        div[data-testid='stMetricValue'] {
+            font-size: 1.25rem !important;
+        }
+    }
+
+    /* Mobile breakpoint (<= 768px) */
+    @media (max-width: 768px) {
+        /* Hero banner becomes vertical stack */
+        .satria-hero .isi {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            padding: 16px 14px !important;
+            gap: 12px !important;
+            min-height: auto !important;
+        }
+        .satria-hero .lgo {
+            width: 58px !important;
+            height: 58px !important;
+            border-radius: 12px !important;
+        }
+        .satria-hero .lgo img {
+            max-width: 48px !important;
+            max-height: 48px !important;
+        }
+        .satria-hero .lgo.satria {
+            display: none !important;
+        }
+        .satria-hero .lembaga {
+            font-size: 0.72rem !important;
+            letter-spacing: 1.5px !important;
+        }
+        .satria-hero .judul {
+            font-size: 1.15rem !important;
+            line-height: 1.3 !important;
+        }
+        .satria-hero .chip-row {
+            gap: 6px !important;
+            margin-top: 8px !important;
+        }
+        .satria-hero .chip {
+            font-size: 0.68rem !important;
+            padding: 2px 9px !important;
+        }
+
+        /* Metric cards adapt gracefully */
+        div[data-testid='stMetric'] {
+            padding: 10px 12px !important;
+            margin-bottom: 8px !important;
+            border-radius: 10px !important;
+        }
+        div[data-testid='stMetricLabel'] {
+            font-size: 0.70rem !important;
+        }
+        div[data-testid='stMetricValue'] {
+            font-size: 1.10rem !important;
+            word-break: break-word !important;
+        }
+
+        /* Government cards and forms */
+        .gov-card {
+            padding: 12px 14px !important;
+            border-radius: 12px !important;
+        }
+
+        /* Footer stacked vertically on mobile */
+        .satria-kaki {
+            flex-direction: column !important;
+            text-align: center !important;
+            gap: 10px !important;
+            padding: 14px !important;
+            font-size: 0.75rem !important;
+        }
+
+        /* Touch friendly buttons */
+        .stButton>button, .stDownloadButton>button, .stFormSubmitButton>button {
+            width: 100% !important;
+            padding: 0.55rem 1rem !important;
+            font-size: 0.84rem !important;
+        }
+
+        /* Sidebar mobile touch feel */
+        [data-testid="stSidebar"] {
+            box-shadow: 8px 0 36px rgba(0, 0, 0, 0.75) !important;
+        }
+        .sb-brand-wrap {
+            padding: 14px 12px 10px !important;
+        }
+        .sb-profile-card {
+            margin: 6px 8px !important;
+            padding: 10px !important;
+        }
+    }
 </style>
 """
     st.markdown(css, unsafe_allow_html=True)
@@ -617,15 +769,15 @@ def tiga_pilar():
 """, unsafe_allow_html=True)
 
 
-def foto_bangunan(keterangan="Gedung Markas Komando Puslitbang Polri"):
+def foto_bangunan(keterangan="GEDUNG MAKO PUSLITBANG POLRI, BOJONG GEDE, KAB. BOGOR, JAWA BARAT."):
     """Bingkai foto resmi Gedung Mako Puslitbang Polri."""
     b = _data_uri("MAKO PUSLITBANG TERBARU.jpeg") or _data_uri("gedung_band.jpg")
     if not b:
         return
     st.markdown(
         f"<div style='border-radius:14px; overflow:hidden; border:1px solid #cbd5e1; box-shadow:0 6px 18px rgba(7,21,39,0.12); margin-bottom:12px;'>"
-        f"<img src='{b}' alt='{keterangan}' style='width:100%; display:block;'/>"
-        f"<div style='background:linear-gradient(90deg, #071527, #143564); color:#fff; font-size:0.80rem; font-weight:600; padding:8px 14px;'>"
+        f"<img src='{b}' alt='{keterangan}' style='width:100%; height:auto; display:block; object-fit:cover;'/>"
+        f"<div style='background:linear-gradient(90deg, #071527, #143564); color:#fff; font-size:0.80rem; font-weight:700; padding:10px 14px; line-height:1.45; word-break:break-word;'>"
         f"🏛️ {keterangan}</div></div>",
         unsafe_allow_html=True)
 
@@ -771,7 +923,7 @@ def halaman_masuk():
                 "- **Kata sandi bawaan:** `satria2026`")
 
     with kanan:
-        foto_bangunan("Gedung Markas Komando Puslitbang Polri — Rawamangun, Jakarta Timur")
+        foto_bangunan("GEDUNG MAKO PUSLITBANG POLRI, BOJONG GEDE, KAB. BOGOR, JAWA BARAT.")
 
     st.write("")
     kaki()
